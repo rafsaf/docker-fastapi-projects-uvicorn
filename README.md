@@ -132,28 +132,42 @@ You should see:
 
 ## Troubleshoots
 
-> Ok but why on earth do we need to type in `CMD python -m uvicorn main:app --host 0.0.0.0 --port 80 ` in our `Dockerfile` instead of ` unicorn etc.`?
+### Host 0.0.0.0
 
-Why not? But sure, we can also type just `uvicorn main:app --host 0.0.0.0 --port 80`
+Wasn't it just `python -m uvicorn main:app --reload` in tutorial? I understand `--port 80`, by why do we specify `--host 0.0.0.0` ? What's a diffrence?
 
-<br>
-
-> What if we want, say map port `8888` or `5100` of the Container to our `localhost:80` ?
-
-No problem, just change `EXPOSE 80` to `EXPOSE 8888` or `EXPOSE 5100` and in ` CMD python` change `--port 80` to `--port 8888` or `--port 5100` and run it like
-
-```
-docker run --rm -it  -p 80:8888/tcp first_project:latest
-
-docker run --rm -it  -p 80:5100/tcp first_project:latest
-```
+- The diffrence is crucial! You need bind a server to `0.0.0.0` so traffic coming from outside of the container is also accepted. If you don't, it will not be reachable from outside the container no matter what you do.
 
 <br>
 
-> OK i have my favourite port `8888` but I don't like `localhost:80` in my browser, i would love to use `localhost:3001`
+### CMD command
 
-Just map to a diffrent port
+Ok but why on earth do we need to type in `CMD python -m uvicorn main:app --host 0.0.0.0 --port 80 ` in our `Dockerfile` instead of ` unicorn etc.`?
 
-```
-docker run --rm -it  -p 3001:8888/tcp first_project:latest
-```
+- Why not? Sure, we can also type just `uvicorn main:app --host 0.0.0.0 --port 80`
+
+<br>
+
+### Container port
+
+What if we want, say map port `8888` or `5100` of the Container to our `localhost:80` ?
+
+- No problem, just change `EXPOSE 80` to `EXPOSE 8888` or `EXPOSE 5100` and in ` CMD python` change `--port 80` to `--port 8888` or `--port 5100` and run it like
+
+  ```
+  docker run --rm -it  -p 80:8888/tcp first_project:latest
+
+  docker run --rm -it  -p 80:5100/tcp first_project:latest
+  ```
+
+<br>
+
+### Local port
+
+OK i have my favourite port `8888` but I don't like `localhost:80` in my browser, i would love to use `localhost:3001`
+
+- Just map to a diffrent port
+
+  ```
+  docker run --rm -it  -p 3001:8888/tcp first_project:latest
+  ```
