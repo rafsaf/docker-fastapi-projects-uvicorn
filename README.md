@@ -136,8 +136,6 @@ You should see:
 
 Why not? But sure, we can also type just `uvicorn main:app --host 0.0.0.0 --port 80`
 
----
-
 <br>
 
 > What if we want, say map port `8888` or `5100` of the Container to our `localhost:80` ?
@@ -149,8 +147,6 @@ docker run --rm -it  -p 80:8888/tcp first_project:latest
 
 docker run --rm -it  -p 80:5100/tcp first_project:latest
 ```
-
----
 
 <br>
 
