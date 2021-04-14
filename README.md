@@ -112,7 +112,8 @@ Then you can type out line below or just use great docker client or VS Code with
 
 ```
 $ docker run --rm -it  -p 80:80/tcp first_project:latest
-#
+
+# Runs first_project image
 ```
 
 <img src="https://raw.githubusercontent.com/rafsaf/docker-fastapi-projects/main/images/first_project/first_project_2.png" />
