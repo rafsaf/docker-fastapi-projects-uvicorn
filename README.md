@@ -6,6 +6,6 @@ _Well-documented examples of deployment-ready FastAPI applications written from 
 
 # Uvicorn
 
-This dead simple application shows you to how to create a simple Docker Image with running FastAPI app on `localhost:80` and presenting the basics of creating and running Docker Images.
+This dead simple application shows you to how to create a simple Docker Image with running FastAPI app with Uvicorn and presenting the basics of creating and running Docker Images.
 
 [See chapter dedicated to this repository](https://docker-fastapi-projects.readthedocs.io/en/latest/uvicorn.html)
